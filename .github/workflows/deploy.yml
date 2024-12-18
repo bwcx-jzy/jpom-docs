@@ -1,0 +1,35 @@
+name: Website Deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # if your docs needs submodules, uncomment the following line
+          # submodules: true
+
+      - name: 'install' # 步骤二，执行sh命令文件
+        run: npm install
+      - name: 'build' # 步骤二，执行sh命令文件
+        run: npm run lbuild # 运行目录是仓库根目录
+
+      - name: Deploy Docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          # This is the branch where the docs are deployed to
+          branch: dist
+          folder: dist
