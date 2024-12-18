@@ -1,0 +1,38 @@
+name: Sync to OSS
+
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+
+jobs:
+    build_and_deploy_job:
+        runs-on: ubuntu-latest
+        name: Build and Deploy Oss
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+                    # if your docs needs submodules, uncomment the following line
+                    # submodules: true
+
+            -   name: 'install' # 步骤二，执行sh命令文件
+                run: npm install
+            -   name: 'build' # 步骤二，执行sh命令文件
+                run: npm run lbuild # 运行目录是仓库根目录
+            -   name: 'Install ossutil'
+                run: |
+                    curl -L https://gosspublic.alicdn.com/ossutil/1.7.0/ossutil64 -o /usr/local/bin/ossutil
+                    chmod +x /usr/local/bin/ossutil
+            -   name: Sync files to OSS
+                env:
+                    ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+                    ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+                    OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
+                run: |
+                    ossutil sync dist oss://jpom-docs/ --delete -f --exclude .DS_Store --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=$OSS_ENDPOINT
