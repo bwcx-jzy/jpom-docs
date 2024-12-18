@@ -23,8 +23,8 @@ export default <VdoingThemeConfig>{
   // repo: "dromara/Jpom", // 导航栏右侧生成Github链接
   searchMaxSuggestions: 10, // 搜索结果显示最大数
   lastUpdated: "更新时间", // 开启更新时间，并配置前缀文字   string | boolean (取值为git提交时间)
-  docsRepo: "dromara/Jpom",
-  docsBranch: "docs",
+  docsRepo: "bwcx-jzy/jpom-docs",
+  docsBranch: "main",
   docsDir: "docs", // 指定根目录
   editLinks: true, // 启用编辑
   editLinkText: "帮助我们改善此文档",
