@@ -36,3 +36,24 @@ jobs:
                     OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
                 run: |
                     ossutil sync dist oss://jpom-docs/ --delete -f --exclude .DS_Store --access-key-id=$ACCESS_KEY_ID --access-key-secret=$ACCESS_KEY_SECRET --endpoint=$OSS_ENDPOINT
+    refresh_cdn_cache_job:
+        runs-on: ubuntu-latest
+        name: Refresh CDN Cache
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+                    # if your docs needs submodules, uncomment the following line
+                    # submodules: true
+
+            -   name: 'install aliyun-python-sdk-cdn'
+                run: pip install aliyun-python-sdk-cdn
+            -   name: 'install aliyun-python-sdk-core'
+                run: pip install aliyun-python-sdk-core
+            -   name: 'Install ossutil'
+                env:
+                    ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+                    ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+                    OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
+                run: python Refresh.py -i $ACCESS_KEY_ID -k $ACCESS_KEY_SECRET -r cdn-urllist.txt -t clear
