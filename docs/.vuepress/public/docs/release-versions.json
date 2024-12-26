@@ -8,8 +8,8 @@
   "downloadUrl": "https://jpom.top/pages/all-downloads/",
   "downloadSource": "cloudflare",
   "auth": {
-    "agentUrl": "https://download.jpom.top/release/2.11.11/agent-2.11.11-release.zip",
-    "serverUrl": "https://download.jpom.top/release/2.11.11/server-2.11.11-release.zip",
+    "agentUrl": "https://download.jpom.top/release/2.11.11/agent-2.11.11-release.zip?token={token}",
+    "serverUrl": "https://download.jpom.top/release/2.11.11/server-2.11.11-release.zip?token={token}",
     "downloadSource": "cn-cdn"
   }
 }
