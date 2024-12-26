@@ -31,7 +31,7 @@ jobs:
                     chmod +x /usr/local/bin/ossutil
             -   name: Sync files to OSS
                 env:
-                    ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+                    ACCESS_KEY_ID: ${{ vars.ACCESS_KEY_ID }}
                     ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
                     OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
                 run: |
