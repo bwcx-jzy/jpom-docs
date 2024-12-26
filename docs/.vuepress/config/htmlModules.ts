@@ -68,9 +68,9 @@ const htmlModule: VdoingThemeConfig["htmlModules"] = {
 
   `,
   windowRB: `
-  <div class="custom-block danger"><p class="custom-block-title">系统公告</p> <p>近期我们下载中心受到持续的恶意刷流量，给我们的长期运营带来了很大的挑战。我们已经将下载中心迁移至 cloudflare，部分网络环境下使用可能不便还请谅解。</p>
-  <p><a href="/pages/malice-fraudulent/" target="_blank">点击查看详情</a></p>
-  </div>
+<!--  <div class="custom-block danger"><p class="custom-block-title">系统公告</p> <p>近期我们下载中心受到持续的恶意刷流量，给我们的长期运营带来了很大的挑战。我们已经将下载中心迁移至 cloudflare，部分网络环境下使用可能不便还请谅解。</p>-->
+<!--  <p><a href="/pages/malice-fraudulent/" target="_blank">点击查看详情</a></p>-->
+<!--  </div>-->
   `,
 };
 
