@@ -33,7 +33,24 @@ JPOM_TYPE="$1"
 ARGS="$*"
 module="$2"
 offline=$(echo "$module" | grep "offline")
+authorize=$(echo "$module" | grep "authorize")
 binAbsPath=$(absPath "$(dirname "$0")")
+
+authorizeUrl=""
+downloadHost=""
+
+if [ "$authorize" == "" ]; then
+	authorizeUrl=""
+	downloadHost="d.jpom.download"
+else
+	token="$3"
+	if [ "$token" == "" ]; then
+    errorExit "请指定授权token参数：./install.sh $JPOM_TYPE ${module} xxxx"
+  fi
+	authorizeUrl="?token=${token}"
+	downloadHost="download.jpom.top"
+	echo "使用授权下载中心：${downloadHost} 授权码：${token}"
+fi
 
 function errorExit() {
 	msg="$1"
@@ -154,7 +171,7 @@ function installJdkFn() {
 			errorExit "系统环境变量中已经存在 JAVA_HOME，请检查配置是否正确.或者终端是否重新加载环境变量：source $userProfileName"
 		fi
 
-		download_url=$(curl -s https://d.jpom.download/jdk-url/8/${ARCH})
+		download_url=$(curl -s https://${downloadHost}/jdk-url/8/${ARCH}{authorizeUrl})
 
 		curl -LfSo jdk.tar.gz "${download_url}"
 
@@ -456,7 +473,7 @@ done
 # 判断是否存在文件
 if [[ ! -f "${fileName}" ]]; then
 	echo "================开始下载 $fileName================"
-	curl -LfSo "${fileName}" "https://d.jpom.download/$use_tag/${versions}/${url_type}-${versions}-release.tar.gz"
+	curl -LfSo "${fileName}" "https://${downloadHost}/$use_tag/${versions}/${url_type}-${versions}-release.tar.gz${authorizeUrl}"
 fi
 # 解压
 tar -zxf "${fileName}" -C "${jpom_dir}"
