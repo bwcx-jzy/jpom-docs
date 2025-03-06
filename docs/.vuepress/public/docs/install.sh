@@ -171,7 +171,7 @@ function installJdkFn() {
 			errorExit "系统环境变量中已经存在 JAVA_HOME，请检查配置是否正确.或者终端是否重新加载环境变量：source $userProfileName"
 		fi
 
-		download_url=$(curl -s https://${downloadHost}/jdk-url/8/${ARCH}{authorizeUrl})
+		download_url=$(curl -s https://${downloadHost}/jdk-url/8/${ARCH}${authorizeUrl})
 
 		curl -LfSo jdk.tar.gz "${download_url}"
 
