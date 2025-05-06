@@ -1,15 +1,15 @@
 {
   "url": "https://jpom.top/docs/versions.json",
-  "tag_name": "v2.11.11.3",
-  "tagName": "v2.11.11.3",
-  "agentUrl": "https://d.jpom.download/beta/2.11.11.3/agent-2.11.11.3-release.zip",
-  "serverUrl": "https://d.jpom.download/beta/2.11.11.3/server-2.11.11.3-release.zip",
+  "tag_name": "v2.11.11.4",
+  "tagName": "v2.11.11.4",
+  "agentUrl": "https://d.jpom.download/beta/2.11.11.4/agent-2.11.11.4-release.zip",
+  "serverUrl": "https://d.jpom.download/beta/2.11.11.4/server-2.11.11.4-release.zip",
   "changelogUrl": "https://gitee.com/dromara/Jpom/raw/beta/CHANGELOG-BETA.md",
   "downloadUrl": "https://jpom.top/pages/all-downloads/",
   "downloadSource": "cloudflare",
   "auth": {
-    "agentUrl": "https://download.jpom.top/beta/2.11.11.3/agent-2.11.11.3-release.zip?token={token}",
-    "serverUrl": "https://download.jpom.top/beta/2.11.11.3/server-2.11.11.3-release.zip?token={token}",
+    "agentUrl": "https://download.jpom.top/beta/2.11.11.4/agent-2.11.11.4-release.zip?token={token}",
+    "serverUrl": "https://download.jpom.top/beta/2.11.11.4/server-2.11.11.4-release.zip?token={token}",
     "downloadSource": "cn-cdn"
   }
 }
