@@ -11,10 +11,10 @@ export default [
       text: "大陆站",
       link: "https://jpom.top",
       },
-      {
-      text: "国际站",
-      link: "https://jpom.dromara.org ",
-      },
+      // {
+      // text: "国际站",
+      // link: "https://jpom.dromara.org",
+      // },
       {
       text: "dromara 官网",
       link: "https://dromara.org",
