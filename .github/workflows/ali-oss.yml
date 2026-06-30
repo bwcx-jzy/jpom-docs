@@ -1,10 +1,12 @@
 name: Sync to OSS
 
 on:
-    pull_request:
-    push:
-        branches:
-            - main
+    # ponytail: 站点改由 GitHub Pages 托管，已禁用自动同步到 OSS。需要时在 Actions 页手动触发
+    # pull_request:
+    # push:
+    #     branches:
+    #         - main
+    workflow_dispatch:
 
 permissions:
     contents: write
