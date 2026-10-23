@@ -1,25 +1,7 @@
 export default [
   {
-    text: "💻演示系统",
-    link: "/pages/2e4ffc/",
-    items: [
-      {
-        text: "🔖回到首页",
-        link: "/",
-      },
-      {
-      text: "大陆站",
-      link: "https://jpom.top",
-      },
-      // {
-      // text: "国际站",
-      // link: "https://jpom.dromara.org",
-      // },
-      {
-      text: "dromara 官网",
-      link: "https://dromara.org",
-      },
-    ],
+    text: "📢项目公告",
+    link: "/pages/project-suspended/",
   },
   {
     text: "📖安装文档",
