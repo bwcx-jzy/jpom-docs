@@ -21,7 +21,7 @@ npm run lbuild   # 构建到 dist/
 - 下载中心：已迁移至 Cloudflare R2（<https://d2.jpom.download>）。
 - 项目状态：Jpom 已于 2026-02-05 暂停维护，详见 <https://jpom.top/pages/project-suspended/>。
 
-> `.github/workflows/ali-oss.yml` 仅保留为手动触发的回退方案，已停用自动同步。
+> 历史 OSS 回退工作流（`ali-oss.yml`）及其 `Refresh.py`、`cdn-urllist.txt` 已随阿里云 OSS 停用一并删除；文档站只通过 GitHub Pages 发布。
 
 ## 生成补丁文件
 
