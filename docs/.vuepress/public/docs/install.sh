@@ -41,7 +41,7 @@ downloadHost=""
 
 if [ "$authorize" == "" ]; then
 	authorizeUrl=""
-	downloadHost="d.jpom.download"
+	downloadHost="d2.jpom.download"
 else
 	token="$3"
 	if [ "$token" == "" ]; then
@@ -161,46 +161,61 @@ function installJdkFn() {
 			errorExit "Unsupported arch: ${ARCH_O}"
 			;;
 		esac
-		useDir=$(mustMkdir /usr/java/ java)
+		useDir=$(mustMkdir /usr/java java)
 		userProfileName=$(findProfile)
 
-		if grep -q "CLASSPATH" "$userProfileName"; then
-			errorExit "系统环境变量中已经存在 CLASSPATH，请检查配置是否正确.或者终端是否重新加载环境变量：source $userProfileName"
+		# 清理上次安装中断残留的 jpom 配置块，保证脚本可以重复执行（issue #101）
+		if grep -q "# >>> jpom java >>>" "$userProfileName" 2>/dev/null; then
+			sed -i.bak '/# >>> jpom java >>>/,/# <<< jpom java <<</d' "$userProfileName" && rm -f "${userProfileName}.bak"
 		fi
-		if grep -q "JAVA_HOME" "$userProfileName"; then
-			errorExit "系统环境变量中已经存在 JAVA_HOME，请检查配置是否正确.或者终端是否重新加载环境变量：source $userProfileName"
+		if grep -q "JAVA_HOME" "$userProfileName" 2>/dev/null; then
+			echo "WARN: 环境变量文件 $userProfileName 中已存在 JAVA_HOME，将追加本脚本的配置（后定义生效）" >&2
+		fi
+		if grep -q "CLASSPATH" "$userProfileName" 2>/dev/null; then
+			# CLASSPATH 常由其它软件设置，Java 8+ 通常不需要，不再作为安装失败条件（issue #101）
+			echo "WARN: 环境变量文件 $userProfileName 中已存在 CLASSPATH，保留原配置" >&2
 		fi
 
 		download_url=$(curl -s https://${downloadHost}/jdk-url/8/${ARCH}${authorizeUrl})
 
-		curl -LfSo jdk.tar.gz "${download_url}"
-
-		#	检查是否下载成功
-		if [[ ! -f jdk.tar.gz ]]; then
+		if [[ -z "$download_url" ]]; then
+			errorExit "获取 JDK 下载地址失败，请检查网络或下载中心：https://${downloadHost}"
+		fi
+		if ! curl -LfSo jdk.tar.gz "${download_url}"; then
 			errorExit "JDK下载失败，请检查下载地址 : $download_url"
 		fi
-
-		#
-		jdk_name=$(tar -tf jdk.tar.gz | grep 'jdk' | head -1)
-
-		#	检查环境变量
-		if grep -q "$useDir/${jdk_name}" "$userProfileName"; then
-			errorExit "系统环境变量中已经存在 jdk 路径，请检查配置是否正确.或者终端是否重新加载环境变量：source $userProfileName"
+		#	检查下载内容是否为合法压缩包（避免把错误页/空文件当成 JDK）
+		if [[ ! -s jdk.tar.gz ]] || ! tar -tzf jdk.tar.gz >/dev/null 2>&1; then
+			errorExit "JDK压缩包无效，请检查下载地址或网络 : $download_url"
 		fi
-
-		tar -zxf jdk.tar.gz -C "$useDir"
+		#
+		jdk_name=$(tar -tzf jdk.tar.gz | head -1 | cut -d/ -f1)
+		if [[ -z "$jdk_name" ]]; then
+			errorExit "JDK压缩包内容异常，请检查下载地址 : $download_url"
+		fi
+		if ! tar -zxf jdk.tar.gz -C "$useDir"; then
+			errorExit "JDK解压失败，请检查安装目录权限 : $useDir"
+		fi
+		if [[ ! -x "$useDir/${jdk_name}/bin/java" ]]; then
+			errorExit "JDK解压后未找到 java 可执行文件，请检查安装目录 : $useDir/${jdk_name}"
+		fi
 		echo "安装jdk,路径 $useDir/${jdk_name}"
 		cat >>"$userProfileName" <<EOF
 
+# >>> jpom java >>>
 export JAVA_HOME=$useDir/${jdk_name}
 export CLASSPATH=.:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib/tools.jar
 export PATH=\$PATH:\$JAVA_HOME/bin
+# <<< jpom java <<<
 EOF
 		echo "use profile $userProfileName"
 		# shellcheck source=.profile
 		source "$userProfileName"
 		# 删除jdk压缩包
 		rm -f jdk.tar.gz
+		if [[ "$(checkCommand java)" == "not found" ]]; then
+			errorExit "JDK 安装完成但当前终端仍找不到 java，请手动执行 source $userProfileName 后重试"
+		fi
 	else
 		echo "已经存在java环境${javaCommand}"
 	fi
