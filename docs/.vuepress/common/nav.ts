@@ -1,5 +1,9 @@
 export default [
   {
+    text: "🛡️安全公告",
+    link: "/pages/security/",
+  },
+  {
     text: "📢项目公告",
     link: "/pages/project-suspended/",
   },
