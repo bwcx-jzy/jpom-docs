@@ -87,21 +87,51 @@ function updateDocUrlItem() {
 		cat >"${pwd}/temp-docs.log" <<EOF
 ## ${1}-${use_tag}
 
-- [jpom-$1.zip](https://d2.jpom.download/$use_tag/$1/jpom-$1.zip)
-- [server-$1-release.tar.gz](https://d2.jpom.download/$use_tag/$1/server-$1-release.tar.gz) | [sha1sum](https://d2.jpom.download/$use_tag/$1/server-$1-release.tar.gz.sha1)
-- [server-$1-release.zip](https://d2.jpom.download/$use_tag/$1/server-$1-release.zip) | [sha1sum](https://d2.jpom.download/$use_tag/$1/server-$1-release.zip.sha1)
-- [agent-$1-release.tar.gz](https://d2.jpom.download/$use_tag/$1/agent-$1-release.tar.gz) | [sha1sum](https://d2.jpom.download/$use_tag/$1/agent-$1-release.tar.gz.sha1)
-- [agent-$1-release.zip](https://d2.jpom.download/$use_tag/$1/agent-$1-release.zip) | [sha1sum](https://d2.jpom.download/$use_tag/$1/agent-$1-release.zip.sha1)
+- [jpom-${1}.zip](https://d2.jpom.download/${use_tag}/${1}/jpom-${1}.zip)
+- [server-${1}-release.tar.gz](https://d2.jpom.download/${use_tag}/${1}/server-${1}-release.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/server-${1}-release.tar.gz.sha1)
+- [server-${1}-release.zip](https://d2.jpom.download/${use_tag}/${1}/server-${1}-release.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/server-${1}-release.zip.sha1)
+- [agent-${1}-release.tar.gz](https://d2.jpom.download/${use_tag}/${1}/agent-${1}-release.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-${1}-release.tar.gz.sha1)
+- [agent-${1}-release.zip](https://d2.jpom.download/${use_tag}/${1}/agent-${1}-release.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-${1}-release.zip.sha1)
+
+**Go 插件端（可选，单二进制免 JDK；按目标平台下载对应包）**
+
+- [agent-go-${1}-release-linux-amd64.zip](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-amd64.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-amd64.zip.sha1) | [tar.gz](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-amd64.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-amd64.tar.gz.sha1)
+- [agent-go-${1}-release-linux-arm64.zip](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-arm64.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-arm64.zip.sha1) | [tar.gz](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-arm64.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-linux-arm64.tar.gz.sha1)
+- [agent-go-${1}-release-darwin-amd64.zip](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-amd64.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-amd64.zip.sha1) | [tar.gz](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-amd64.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-amd64.tar.gz.sha1)
+- [agent-go-${1}-release-darwin-arm64.zip](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-arm64.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-arm64.zip.sha1) | [tar.gz](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-arm64.tar.gz) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-darwin-arm64.tar.gz.sha1)
+- [agent-go-${1}-release-windows-amd64.zip](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-windows-amd64.zip) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-release-windows-amd64.zip.sha1)
+
+**Go 插件端在线升级容器（按节点平台选择，平台必须匹配；upgrade.jar 为 linux/amd64 兼容别名）**
+
+- [agent-go-${1}-upgrade-linux-amd64.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-linux-amd64.jar) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-linux-amd64.jar.sha1)
+- [agent-go-${1}-upgrade-linux-arm64.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-linux-arm64.jar) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-linux-arm64.jar.sha1)
+- [agent-go-${1}-upgrade-darwin-amd64.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-darwin-amd64.jar) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-darwin-amd64.jar.sha1)
+- [agent-go-${1}-upgrade-darwin-arm64.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-darwin-arm64.jar) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-darwin-arm64.jar.sha1)
+- [agent-go-${1}-upgrade-windows-amd64.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-windows-amd64.jar) | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade-windows-amd64.jar.sha1)
+- [agent-go-${1}-upgrade.jar](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade.jar)（linux/amd64 兼容别名，供旧版 Server 手工上传） | [sha1sum](https://d2.jpom.download/${use_tag}/${1}/agent-go-${1}-upgrade.jar.sha1)
 
 --------
 
 EOF
-		#		插入第 21 行
-		sed -i.bak "21r ${pwd}/temp-docs.log" "${mdPath}"
+		# 插入到第一个版本标题（## x.y.z）之前，避免页面新增提示块后固定行号失效
+		python3 - "${mdPath}" "${pwd}/temp-docs.log" <<'PY'
+import sys
+
+md_path, block_path = sys.argv[1], sys.argv[2]
+lines = open(md_path, encoding="utf-8").read().splitlines(keepends=True)
+block = open(block_path, encoding="utf-8").read()
+for index, line in enumerate(lines):
+    if line.startswith("## "):
+        lines.insert(index, block)
+        break
+else:
+    lines.append(block)
+open(md_path, "w", encoding="utf-8").write("".join(lines))
+PY
 	fi
 }
 
 updateDocUrlItem "$new_version"
+rm -f "${pwd}/temp-docs.log"
 
-# 保留新版本号
 echo "$new_version" >"${pwd}/docs/.vuepress/public/docs/versions.$use_tag.tag"
