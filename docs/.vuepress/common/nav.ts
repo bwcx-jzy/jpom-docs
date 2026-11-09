@@ -18,6 +18,7 @@ export default [
           { text: "下载安装", link: "/pages/db3065/" },
           { text: "容器安装", link: "/pages/820286/" },
           { text: "安装服务", link: "/pages/929085/" },
+          { text: "Go 插件端（安装/切换/升级）", link: "/pages/go-agent/install/" },
         ],
       },
       {
