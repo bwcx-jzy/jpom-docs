@@ -39,7 +39,7 @@ export default <HeadTags>[
   [
     "noscript",
     {},
-    '<meta http-equiv="refresh" content="0; url=https://jpom.io/noscript.html"><style>.theme-vdoing-content { display:none }',
+    '<meta http-equiv="refresh" content="0; url=https://jpom.top/"><style>.theme-vdoing-content { display:none }',
   ],
   // <meta name="baidu-site-verification" content="code-te8iliecTI" />
   ["meta", { name: "baidu-site-verification", content: "code-te8iliecTI" }],
