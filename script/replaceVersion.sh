@@ -17,8 +17,8 @@
 #   sh script/replaceVersion.sh <version> <release|beta>
 #
 # 可选环境变量：
-#   JPOM_LEGACY_ZIP              是否在下载页同时生成 zip 链接（过渡期默认 true；2.12.0 起设 false）
-#   JPOM_ONLINE_UPGRADE_EXT      在线升级 URL 的后缀：zip（默认，过渡期）| tar.gz（2.12.0 起）
+#   JPOM_LEGACY_ZIP              是否在下载页同时生成 zip 链接（过渡期默认 true；过渡窗口结束后设 false）
+#   JPOM_ONLINE_UPGRADE_EXT      在线升级 URL 的后缀：zip（默认，过渡期）| tar.gz（过渡窗口结束后）
 #-----------------------------------------------------------
 
 set -o errexit
@@ -114,7 +114,7 @@ else
 	)
 fi
 
-# 在线升级 URL 默认仍指向 zip（兼容旧客户端）；2.12.0 起切换为 tar.gz
+# 在线升级 URL 默认仍指向 zip（兼容旧客户端）；过渡窗口结束后切换为 tar.gz
 if [ "$online_ext" != "zip" ]; then
 	for file in "${json_files[@]}"; do
 		sed -i.bak "s/-release\.zip/-release.${online_ext}/g" "${file}"
@@ -137,7 +137,6 @@ updateDocUrlItem() {
 	{
 		echo "## ${version}-${use_tag}"
 		echo
-		echo "- [jpom-${version}.tar.gz](${d2_base}/jpom-${version}.tar.gz)"
 		echo "- [server-${version}-release.tar.gz](${d2_base}/server-${version}-release.tar.gz) | [sha1sum](${d2_base}/server-${version}-release.tar.gz.sha1)"
 		echo "- [agent-${version}-release.tar.gz](${d2_base}/agent-${version}-release.tar.gz) | [sha1sum](${d2_base}/agent-${version}-release.tar.gz.sha1)"
 		if [ "$legacy_zip" = "true" ]; then
@@ -152,12 +151,11 @@ updateDocUrlItem() {
 			echo "- [agent-go-${version}-release-${platform}.tar.gz](${d2_base}/agent-go-${version}-release-${platform}.tar.gz) | [sha1sum](${d2_base}/agent-go-${version}-release-${platform}.tar.gz.sha1)"
 		done
 		echo
-		echo "**Go 插件端在线升级容器（按节点平台选择，平台必须匹配；upgrade.jar 为 linux/amd64 兼容别名）**"
+		echo "**Go 插件端在线升级容器（按节点平台选择，平台必须匹配）**"
 		echo
 		for platform in linux-amd64 linux-arm64 darwin-amd64 darwin-arm64 windows-amd64; do
 			echo "- [agent-go-${version}-upgrade-${platform}.jar](${d2_base}/agent-go-${version}-upgrade-${platform}.jar) | [sha1sum](${d2_base}/agent-go-${version}-upgrade-${platform}.jar.sha1)"
 		done
-		echo "- [agent-go-${version}-upgrade.jar](${d2_base}/agent-go-${version}-upgrade.jar)（linux/amd64 兼容别名，供旧版 Server 手工上传） | [sha1sum](${d2_base}/agent-go-${version}-upgrade.jar.sha1)"
 		echo
 		echo "--------"
 		echo

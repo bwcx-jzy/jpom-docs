@@ -19,7 +19,7 @@
 #
 # 说明：
 #   - 默认 JPOM_LEGACY_ZIP=true（过渡期下载页同时列 zip），JPOM_ONLINE_UPGRADE_EXT=zip；
-#     2.12.0 起传 --no-legacy-zip --online-ext tar.gz。
+#     过渡窗口结束后传 --no-legacy-zip --online-ext tar.gz。
 #   - --changelog-file 从 Jpom 的 CHANGELOG.md/CHANGELOG-BETA.md 提取对应段落到文档站更新日志页；
 #     找不到段落时只警告，不阻塞。
 #   - 只修改文件，不 commit/push（由 CI 工作流或发布脚本负责提交）。
