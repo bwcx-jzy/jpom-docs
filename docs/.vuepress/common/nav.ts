@@ -8,6 +8,30 @@ export default [
     link: "/pages/project-suspended/",
   },
   {
+    text: "🚀快速上手",
+    link: "/pages/quickstart/",
+    items: [
+      {
+        text: "新手路线",
+        items: [
+          { text: "十分钟上手（图文）", link: "/pages/quickstart/" },
+          { text: "菜单地图与路径速查", link: "/pages/menu-map/" },
+        ],
+      },
+      {
+        text: "典型操作（图文）",
+        items: [
+          { text: "节点项目：新增与启停", link: "/pages/b3e508/" },
+          { text: "节点脚本：定时任务", link: "/pages/8a95bf/" },
+          { text: "节点分发：多节点发布", link: "/pages/e35370/" },
+          { text: "日志搜索：集中查日志", link: "/pages/c5cbe6/" },
+          { text: "在线构建：仓库到发布", link: "/pages/build-guide/" },
+          { text: "监控与告警", link: "/pages/monitor-guide/" },
+        ],
+      },
+    ],
+  },
+  {
     text: "📖安装文档",
     link: "/pages/install/",
     items: [
@@ -92,18 +116,38 @@ export default [
     text: "💡DSL说明",
     link: "/pages/FQA/DSL/",
     items: [
-      { text: "万能的 DSL 项目模板（Java）", link: "/pages/practice/4756ec/" },
       {
-        text: "本地构建 + 自定义管理 python 项目",
-        link: "/pages/practice/project-dsl-python/",
+        text: "DSL 入门与场景",
+        items: [
+          { text: "DSL 是什么、能做什么", link: "/pages/FQA/DSL/" },
+          { text: "配置字段详解（YAML）", link: "/pages/dsl-config/" },
+          { text: "常见问题与排查", link: "/pages/9c85bc/" },
+        ],
       },
       {
-        text: "DSL 项目接口探活监控报警",
-        link: "/pages/practice/610387/",
+        text: "配置示例",
+        items: [
+          { text: "管理 Java 项目（含 JDK 版本）", link: "/pages/519020/" },
+          { text: "管理 Python 项目", link: "/pages/eb9c6e/" },
+          { text: "容器构建的 DSL", link: "/pages/5020f7/" },
+        ],
       },
       {
-        text: "DSL 项目来管理 NGINX",
-        link: "/pages/practice/dc2837/",
+        text: "实践案例（当前写法）",
+        items: [
+          { text: "DSL 管理 NGINX", link: "/pages/practice/dc2837/" },
+          { text: "DSL 接口探活监控报警", link: "/pages/practice/610387/" },
+          { text: "DSL 管理 Tomcat", link: "/pages/practice/dc2836/" },
+          { text: "DSL 管理 Elasticsearch", link: "/pages/practice/8017a2/" },
+        ],
+      },
+      {
+        text: "老版本写法（2.9 及以前）",
+        items: [
+          { text: "万能的 DSL 项目模板（Java）", link: "/pages/practice/4756ec/" },
+          { text: "自定义管理 python 项目", link: "/pages/practice/project-dsl-python/" },
+          { text: "接口探活（旧写法）", link: "/pages/practice/ac7b66/" },
+        ],
       },
     ],
   },

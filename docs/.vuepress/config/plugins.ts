@@ -1,5 +1,6 @@
 import { UserPlugins } from "vuepress/config";
 import dayjs from "dayjs";
+import seoEnhance from "./seo";
 
 // 插件配置
 export default <UserPlugins>[
@@ -10,6 +11,9 @@ export default <UserPlugins>[
       globalUIComponents: ["PageInfo"], // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
     },
   ],
+
+  // SEO 增强：每页唯一 description、canonical、Open Graph / Twitter Card
+  seoEnhance as any,
 
   "vuepress-plugin-baidu-autopush", // 百度自动推送
 
@@ -186,6 +190,9 @@ export default <UserPlugins>[
     "sitemap",
     {
       hostname: "https://jpom.top",
+      // 404 页与 404.md 不参与收录；lastmod 由 git 提交时间自动生成
+      exclude: ["/404.html"],
+      changefreq: "weekly",
     },
   ],
 ];

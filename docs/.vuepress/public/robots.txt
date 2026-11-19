@@ -1,4 +1,7 @@
-# robots.txt generated at http://www.jsons.cn/robots/
+# https://jpom.top/robots.txt
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /404.html
+
+# 站点地图：由 vuepress-plugin-sitemap 在构建时生成
 Sitemap: https://jpom.top/sitemap.xml

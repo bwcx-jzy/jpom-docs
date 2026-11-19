@@ -1,5 +1,6 @@
 ---
 home: true
+description: Jpom 是一款开源的低侵入式项目运维管理系统，提供在线构建、自动部署、SSH 终端、定时脚本、Docker 管理与项目监控告警，支持一键安装与容器部署。
 heroImage: /images/logo/jpom_logo_big.svg
 heroText: 一款原生 ops 软件
 tagline: 【dromara】🚀简而轻的低侵入式在线构建、自动部署、日常运维、项目运维监控软件
