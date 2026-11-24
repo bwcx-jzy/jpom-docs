@@ -182,3 +182,69 @@ body .vuepress-plugin-demo-block__wrapper {
 	padding-top: 5px;
 	display: block;
 }
+
+// ==================== 顶部导航优化 ====================
+// 一级菜单收敛为 7 项后，这里做两件事：
+// 1) 下拉面板位置/宽度微调，避免最左侧菜单把面板顶出屏幕、长文案挤成一行；
+// 2) 窄屏（1280 / 1180 / 1024 常见笔记本宽度）逐级压缩字号与间距，保证一行放得下、不和站点名重叠。
+.navbar
+	.nav-dropdown
+		min-width 12rem
+		box-shadow 0 10px 28px rgba(0, 0, 0, 0.12)
+		border-radius 0.4rem
+
+	// 最左侧两项的下拉面板向右展开，否则 right:0 会把面板推到屏幕外
+	.nav-item:first-child .nav-dropdown,
+	.nav-item:nth-child(2) .nav-dropdown
+		right auto
+		left 0
+
+	// 下拉面板内分组标题与条目之间的呼吸感
+	.nav-dropdown .dropdown-item h4
+		font-size 0.82rem
+		font-weight 600
+		opacity 0.75
+		letter-spacing 0.02em
+
+@media (max-width 1320px)
+	.navbar .nav-links .nav-item
+		margin-left 1rem
+
+@media (max-width 1200px)
+	.navbar
+		padding-left 1rem
+		padding-right 1rem
+
+		.links
+			padding-left 0.75rem
+
+		.site-name
+			font-size 1.15rem
+
+		.nav-links
+			.nav-item
+				margin-left 0.6rem
+
+			.nav-item .dropdown-title,
+			.nav-item > a
+				font-size 0.84rem
+
+		.search-box input
+			width 7.5rem
+
+@media (max-width 1080px)
+	.navbar
+		.site-name
+			display none
+
+		.links
+			padding-left 1rem
+
+		.nav-links
+			.nav-item
+				margin-left 0.75rem
+
+			.nav-item .dropdown-title,
+			.nav-item > a
+				font-size 0.86rem
+
