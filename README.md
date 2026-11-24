@@ -19,7 +19,7 @@ npm run lbuild   # 构建到 dist/
 - 线上站点：<https://jpom.top>，由 GitHub Pages 托管；自定义域名以 `docs/.vuepress/public/CNAME` 为准（构建后进入 `dist/CNAME`）。
 - 发布流程：push 到 `main` 后，`.github/workflows/deploy.yml` 自动构建并推送到 `dist` 分支，GitHub Pages 再从 `dist` 分支发布。
 - 下载中心：已迁移至 Cloudflare R2（<https://d2.jpom.download>）。
-- 项目状态：Jpom 已于 2026-02-05 暂停维护，详见 <https://jpom.top/pages/project-suspended/>。
+- 项目状态：Jpom 于 2026-02-05 暂停常规功能迭代；2026-11-02 起暂时继续使用 AI 开发、继续维持更新（安全优先、BUG 其次、其他功能按反馈与评估），详见 <https://jpom.top/pages/project-suspended/>。
 
 > 历史 OSS 回退工作流（`ali-oss.yml`）及其 `Refresh.py`、`cdn-urllist.txt` 已随阿里云 OSS 停用一并删除；文档站只通过 GitHub Pages 发布。
 

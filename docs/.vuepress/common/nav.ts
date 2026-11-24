@@ -8,6 +8,10 @@ export default [
     link: "/pages/project-suspended/",
   },
   {
+    text: "💻演示系统",
+    link: "/pages/2e4ffc/",
+  },
+  {
     text: "🚀快速上手",
     link: "/pages/quickstart/",
     items: [
