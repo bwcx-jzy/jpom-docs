@@ -2,10 +2,10 @@
   "url": "https://jpom.top/docs/beta-versions.json",
   "tag_name": "v2.11.15.3",
   "tagName": "v2.11.15.3",
-  "agentUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz",
-  "serverUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.tar.gz",
-  "agentZipUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.zip",
-  "serverZipUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.zip",
+  "agentUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.zip",
+  "serverUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.zip",
+  "agentTarGzUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz",
+  "serverTarGzUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.tar.gz",
   "goAgentUrls": {
     "linux/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-amd64.tar.gz",
     "linux/arm64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-arm64.tar.gz",
@@ -24,8 +24,10 @@
   "downloadUrl": "https://jpom.top/pages/all-downloads/",
   "downloadSource": "cloudflare",
   "auth": {
-    "agentUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz?token={token}",
-    "serverUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.tar.gz?token={token}",
+    "agentUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.zip?token={token}",
+    "serverUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.zip?token={token}",
+    "agentTarGzUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz?token={token}",
+    "serverTarGzUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.tar.gz?token={token}",
     "goAgentUrls": {
       "linux/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-amd64.tar.gz?token={token}",
       "linux/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-arm64.tar.gz?token={token}",
@@ -40,8 +42,6 @@
       "darwin/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-darwin-arm64.jar?token={token}",
       "windows/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-windows-amd64.jar?token={token}"
     },
-    "downloadSource": "cn-cdn",
-    "agentZipUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.zip?token={token}",
-    "serverZipUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.zip?token={token}"
+    "downloadSource": "cn-cdn"
   }
 }

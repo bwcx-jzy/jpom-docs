@@ -1,10 +1,10 @@
 {
   "tag_name": "v2.11.15",
   "tagName": "v2.11.15",
-  "agentUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.tar.gz",
-  "serverUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.tar.gz",
-  "agentZipUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.zip",
-  "serverZipUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.zip",
+  "agentUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.zip",
+  "serverUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.zip",
+  "agentTarGzUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.tar.gz",
+  "serverTarGzUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.tar.gz",
   "goAgentUrls": {
     "linux/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-linux-amd64.tar.gz",
     "linux/arm64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-linux-arm64.tar.gz",

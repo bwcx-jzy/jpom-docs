@@ -18,8 +18,8 @@
 #     [--changelog-file /path/to/CHANGELOG.md] [--legacy-zip] [--no-legacy-zip] [--online-ext zip]
 #
 # 说明：
-#   - 默认 JPOM_LEGACY_ZIP=true（过渡期下载页与清单里保留 zip 兼容包），JPOM_ONLINE_UPGRADE_EXT=tar.gz
-#     （zip 已进入下线窗口，在线升级地址以 tar.gz 为准）；完全下线后传 --no-legacy-zip。
+#   - 默认 JPOM_LEGACY_ZIP=true、JPOM_ONLINE_UPGRADE_EXT=zip：已安装的 2.11.13.2 及更早版本只能解包 zip，
+#     清单主地址保持 zip（新版本会自己优先换 tar.gz）；旧版本退出后再传 --online-ext tar.gz 并公告最低 2.11.14。
 #   - --changelog-file 从 Jpom 的 CHANGELOG.md/CHANGELOG-BETA.md 提取对应段落到文档站更新日志页；
 #     找不到段落时只警告，不阻塞。
 #   - 只修改文件，不 commit/push（由 CI 工作流或发布脚本负责提交）。
@@ -35,7 +35,7 @@ version=""
 channel="release"
 changelog_file=""
 legacy_zip="true"
-online_ext="tar.gz"
+online_ext="zip"
 
 while [ $# -gt 0 ]; do
 	case "$1" in

@@ -18,11 +18,17 @@
     否则页面/客户端只能靠「从 Java 插件端地址推导同目录文件名」这一隐含约定。
 
 结构约定（新增字段只增不改，旧客户端忽略即可）：
-  agentUrl / serverUrl            Java 插件端与服务端在线升级包（tar.gz；--online-ext zip 时仍为 zip）
-  agentZipUrl / serverZipUrl      过渡期 zip 兼容包地址（--legacy-zip true 且主地址不是 zip 时出现）
+  agentUrl / serverUrl            Java 插件端与服务端在线升级包（主地址，--online-ext 决定 zip 或 tar.gz）
+  agentTarGzUrl / serverTarGzUrl  同一版本的 tar.gz 地址（始终输出，供 2.11.14+ 显式使用）
+  agentZipUrl / serverZipUrl      过渡期 zip 兼容包地址（主地址不是 zip 时出现；旧版本靠它一键升级）
+
+  兼容说明：已安装的 2.11.13.2 及更早版本只能解包 zip（`JpomManifest.zipFileFind` 只有 zip/jar 分支），
+  2.11.13.3-beta / 2.11.14 起才支持 tar.gz。因此**过渡期主地址保持 zip**（默认 --online-ext zip），
+  新版本服务端自己会把 .zip 换成 .tar.gz 优先尝试；等旧版本退出后再用 --online-ext tar.gz 切主地址。
   goAgentUrls                     Go 插件端安装包，key 为平台 os/arch（与 go-agent 版本清单一致）
   goUpgradeUrls                   Go 插件端在线升级容器，key 同上
-  auth.agentUrl / auth.serverUrl / auth.goAgentUrls / auth.goUpgradeUrls
+  auth.agentUrl / auth.serverUrl / auth.agentTarGzUrl / auth.serverTarGzUrl
+  auth.goAgentUrls / auth.goUpgradeUrls
                                   带 {token} 占位的国内 CDN 地址（客户端用 JPOM_REMOTE_VERSION_AUTH 替换）
 
 用法：
@@ -51,6 +57,9 @@ def build(channel, version, online_ext, legacy_zip, profile):
     auth_prefix = f"{AUTH_BASE}/{channel}/{version}"
     agent_url = f"{prefix}/agent-{version}-release.{online_ext}"
     server_url = f"{prefix}/server-{version}-release.{online_ext}"
+    # tar.gz 地址始终输出：主地址仍是 zip 时，2.11.14+ 可直接用这份地址（不再依赖后缀替换）
+    agent_targz = f"{prefix}/agent-{version}-release.tar.gz"
+    server_targz = f"{prefix}/server-{version}-release.tar.gz"
     go_agent = {p: f"{prefix}/agent-go-{version}-release-{platform_file_name(p)}.tar.gz" for p in PLATFORMS}
     go_upgrade = {p: f"{prefix}/agent-go-{version}-upgrade-{platform_file_name(p)}.jar" for p in PLATFORMS}
 
@@ -61,6 +70,8 @@ def build(channel, version, online_ext, legacy_zip, profile):
     data["tagName"] = f"v{version}"
     data["agentUrl"] = agent_url
     data["serverUrl"] = server_url
+    data["agentTarGzUrl"] = agent_targz
+    data["serverTarGzUrl"] = server_targz
     # 过渡期兼容包：主地址已切 tar.gz 时仍给出 zip 地址，供下载页/旧客户端说明使用
     if legacy_zip and online_ext != "zip":
         data["agentZipUrl"] = f"{prefix}/agent-{version}-release.zip"
@@ -74,6 +85,8 @@ def build(channel, version, online_ext, legacy_zip, profile):
         auth = {
             "agentUrl": f"{auth_prefix}/agent-{version}-release.{online_ext}?token={{token}}",
             "serverUrl": f"{auth_prefix}/server-{version}-release.{online_ext}?token={{token}}",
+            "agentTarGzUrl": f"{auth_prefix}/agent-{version}-release.tar.gz?token={{token}}",
+            "serverTarGzUrl": f"{auth_prefix}/server-{version}-release.tar.gz?token={{token}}",
             "goAgentUrls": {p: f"{auth_prefix}/agent-go-{version}-release-{platform_file_name(p)}.tar.gz?token={{token}}" for p in PLATFORMS},
             "goUpgradeUrls": {p: f"{auth_prefix}/agent-go-{version}-upgrade-{platform_file_name(p)}.jar?token={{token}}" for p in PLATFORMS},
             "downloadSource": "cn-cdn",
@@ -90,7 +103,8 @@ def main():
     parser.add_argument("--file", required=True)
     parser.add_argument("--channel", required=True, choices=["release", "beta"])
     parser.add_argument("--version", required=True)
-    parser.add_argument("--online-ext", default="tar.gz", choices=["tar.gz", "zip"])
+    # 过渡期默认 zip：已安装的 2.11.13.2 及更早版本只能解包 zip；新版本会自己优先换 tar.gz
+    parser.add_argument("--online-ext", default="zip", choices=["tar.gz", "zip"])
     parser.add_argument("--legacy-zip", default="true", choices=["true", "false"])
     parser.add_argument("--profile", default="full", choices=["full", "min"])
     args = parser.parse_args()

@@ -18,7 +18,7 @@
 #
 # 可选环境变量：
 #   JPOM_LEGACY_ZIP              是否在下载页与版本清单里保留 zip 兼容包地址（过渡期默认 true；下线后设 false）
-#   JPOM_ONLINE_UPGRADE_EXT      在线升级 URL 的后缀：tar.gz（默认，zip 已进入下线窗口）| zip（旧行为）
+#   JPOM_ONLINE_UPGRADE_EXT      在线升级主地址后缀：zip（默认，兼容已安装的旧版本）| tar.gz（旧版本退出后）
 #-----------------------------------------------------------
 
 set -o errexit
@@ -75,8 +75,10 @@ true | false) ;;
 	;;
 esac
 
-# zip 进入下线窗口：在线升级地址默认为 tar.gz（需要过渡期 zip 时显式传 zip）
-online_ext="${JPOM_ONLINE_UPGRADE_EXT:-tar.gz}"
+# 过渡期默认 zip：2.11.13.2 及更早的已安装版本只能解包 zip（`zipFileFind` 只有 zip/jar 分支），
+# 清单主地址切 tar.gz 会让它们的一键升级失效。2.11.14+ 会自己优先换 tar.gz，所以主地址保持 zip 不影响新版本。
+# 等旧版本退出（公告最低 2.11.14）后再把默认值改成 tar.gz。
+online_ext="${JPOM_ONLINE_UPGRADE_EXT:-zip}"
 case "$online_ext" in
 zip | tar.gz) ;;
 *)
