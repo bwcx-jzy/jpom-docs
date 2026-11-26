@@ -1,46 +1,46 @@
 {
   "url": "https://jpom.top/docs/beta-versions.json",
-  "tag_name": "v2.11.15.3",
-  "tagName": "v2.11.15.3",
-  "agentUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.zip",
-  "serverUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.zip",
-  "agentTarGzUrl": "https://d2.jpom.download/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz",
-  "serverTarGzUrl": "https://d2.jpom.download/beta/2.11.15.3/server-2.11.15.3-release.tar.gz",
+  "tag_name": "v2.11.15.4",
+  "tagName": "v2.11.15.4",
+  "agentUrl": "https://d2.jpom.download/beta/2.11.15.4/agent-2.11.15.4-release.zip",
+  "serverUrl": "https://d2.jpom.download/beta/2.11.15.4/server-2.11.15.4-release.zip",
+  "agentTarGzUrl": "https://d2.jpom.download/beta/2.11.15.4/agent-2.11.15.4-release.tar.gz",
+  "serverTarGzUrl": "https://d2.jpom.download/beta/2.11.15.4/server-2.11.15.4-release.tar.gz",
   "goAgentUrls": {
-    "linux/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-amd64.tar.gz",
-    "linux/arm64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-arm64.tar.gz",
-    "darwin/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-darwin-amd64.tar.gz",
-    "darwin/arm64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-darwin-arm64.tar.gz",
-    "windows/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-release-windows-amd64.tar.gz"
+    "linux/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-release-linux-amd64.tar.gz",
+    "linux/arm64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-release-linux-arm64.tar.gz",
+    "darwin/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-release-darwin-amd64.tar.gz",
+    "darwin/arm64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-release-darwin-arm64.tar.gz",
+    "windows/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-release-windows-amd64.tar.gz"
   },
   "goUpgradeUrls": {
-    "linux/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-linux-amd64.jar",
-    "linux/arm64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-linux-arm64.jar",
-    "darwin/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-darwin-amd64.jar",
-    "darwin/arm64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-darwin-arm64.jar",
-    "windows/amd64": "https://d2.jpom.download/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-windows-amd64.jar"
+    "linux/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-linux-amd64.jar",
+    "linux/arm64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-linux-arm64.jar",
+    "darwin/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-darwin-amd64.jar",
+    "darwin/arm64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-darwin-arm64.jar",
+    "windows/amd64": "https://d2.jpom.download/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-windows-amd64.jar"
   },
   "changelogUrl": "https://gitee.com/dromara/Jpom/raw/beta/CHANGELOG-BETA.md",
   "downloadUrl": "https://jpom.top/pages/all-downloads/",
   "downloadSource": "cloudflare",
   "auth": {
-    "agentUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.zip?token={token}",
-    "serverUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.zip?token={token}",
-    "agentTarGzUrl": "https://download.jpom.top/beta/2.11.15.3/agent-2.11.15.3-release.tar.gz?token={token}",
-    "serverTarGzUrl": "https://download.jpom.top/beta/2.11.15.3/server-2.11.15.3-release.tar.gz?token={token}",
+    "agentUrl": "https://download.jpom.top/beta/2.11.15.4/agent-2.11.15.4-release.zip?token={token}",
+    "serverUrl": "https://download.jpom.top/beta/2.11.15.4/server-2.11.15.4-release.zip?token={token}",
+    "agentTarGzUrl": "https://download.jpom.top/beta/2.11.15.4/agent-2.11.15.4-release.tar.gz?token={token}",
+    "serverTarGzUrl": "https://download.jpom.top/beta/2.11.15.4/server-2.11.15.4-release.tar.gz?token={token}",
     "goAgentUrls": {
-      "linux/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-amd64.tar.gz?token={token}",
-      "linux/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-linux-arm64.tar.gz?token={token}",
-      "darwin/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-darwin-amd64.tar.gz?token={token}",
-      "darwin/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-darwin-arm64.tar.gz?token={token}",
-      "windows/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-release-windows-amd64.tar.gz?token={token}"
+      "linux/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-release-linux-amd64.tar.gz?token={token}",
+      "linux/arm64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-release-linux-arm64.tar.gz?token={token}",
+      "darwin/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-release-darwin-amd64.tar.gz?token={token}",
+      "darwin/arm64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-release-darwin-arm64.tar.gz?token={token}",
+      "windows/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-release-windows-amd64.tar.gz?token={token}"
     },
     "goUpgradeUrls": {
-      "linux/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-linux-amd64.jar?token={token}",
-      "linux/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-linux-arm64.jar?token={token}",
-      "darwin/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-darwin-amd64.jar?token={token}",
-      "darwin/arm64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-darwin-arm64.jar?token={token}",
-      "windows/amd64": "https://download.jpom.top/beta/2.11.15.3/agent-go-2.11.15.3-upgrade-windows-amd64.jar?token={token}"
+      "linux/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-linux-amd64.jar?token={token}",
+      "linux/arm64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-linux-arm64.jar?token={token}",
+      "darwin/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-darwin-amd64.jar?token={token}",
+      "darwin/arm64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-darwin-arm64.jar?token={token}",
+      "windows/amd64": "https://download.jpom.top/beta/2.11.15.4/agent-go-2.11.15.4-upgrade-windows-amd64.jar?token={token}"
     },
     "downloadSource": "cn-cdn"
   }
