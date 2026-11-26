@@ -17,8 +17,8 @@
 #   sh script/replaceVersion.sh <version> <release|beta>
 #
 # 可选环境变量：
-#   JPOM_LEGACY_ZIP              是否在下载页同时生成 zip 链接（过渡期默认 true；过渡窗口结束后设 false）
-#   JPOM_ONLINE_UPGRADE_EXT      在线升级 URL 的后缀：zip（默认，过渡期）| tar.gz（过渡窗口结束后）
+#   JPOM_LEGACY_ZIP              是否在下载页与版本清单里保留 zip 兼容包地址（过渡期默认 true；下线后设 false）
+#   JPOM_ONLINE_UPGRADE_EXT      在线升级 URL 的后缀：tar.gz（默认，zip 已进入下线窗口）| zip（旧行为）
 #-----------------------------------------------------------
 
 set -o errexit
@@ -75,7 +75,8 @@ true | false) ;;
 	;;
 esac
 
-online_ext="${JPOM_ONLINE_UPGRADE_EXT:-zip}"
+# zip 进入下线窗口：在线升级地址默认为 tar.gz（需要过渡期 zip 时显式传 zip）
+online_ext="${JPOM_ONLINE_UPGRADE_EXT:-tar.gz}"
 case "$online_ext" in
 zip | tar.gz) ;;
 *)
@@ -94,32 +95,24 @@ replace_in_file() {
 }
 
 downloads=""
-json_files=()
+public_docs="${pwd}/docs/.vuepress/public/docs"
 if [ "$use_tag" = "release" ]; then
-	replace_in_file "${pwd}/docs/.vuepress/public/docs/versions.json" "${old_version}" "${new_version}"
-	replace_in_file "${pwd}/docs/.vuepress/public/docs/release-versions.json" "${old_version}" "${new_version}"
+	# 在线升级清单：tar.gz 为主（zip 进入下线窗口），并给出 Go 插件端 5 平台安装包与升级容器地址
+	python3 "${bin_abs_path}/write-versions-json.py" --file "${public_docs}/versions.json" \
+		--channel release --version "${new_version}" --online-ext "${online_ext}" \
+		--legacy-zip "${legacy_zip}" --profile min
+	python3 "${bin_abs_path}/write-versions-json.py" --file "${public_docs}/release-versions.json" \
+		--channel release --version "${new_version}" --online-ext "${online_ext}" \
+		--legacy-zip "${legacy_zip}" --profile full
 	replace_in_file "${pwd}/package.json" "${old_version}" "${new_version}"
 	replace_in_file "${pwd}/docs/.vuepress/public/docs/versions.show" "${old_version}" "${new_version}"
 	replace_in_file "${pwd}/docs/.vuepress/public/assets/js/common.js" "${old_version}" "${new_version}"
 	downloads="01.下载链接.md"
-	json_files=(
-		"${pwd}/docs/.vuepress/public/docs/versions.json"
-		"${pwd}/docs/.vuepress/public/docs/release-versions.json"
-	)
 else
-	replace_in_file "${pwd}/docs/.vuepress/public/docs/beta-versions.json" "${old_version}" "${new_version}"
+	python3 "${bin_abs_path}/write-versions-json.py" --file "${public_docs}/beta-versions.json" \
+		--channel beta --version "${new_version}" --online-ext "${online_ext}" \
+		--legacy-zip "${legacy_zip}" --profile full
 	downloads="02.下载链接beta.md"
-	json_files=(
-		"${pwd}/docs/.vuepress/public/docs/beta-versions.json"
-	)
-fi
-
-# 在线升级 URL 默认仍指向 zip（兼容旧客户端）；过渡窗口结束后切换为 tar.gz
-if [ "$online_ext" != "zip" ]; then
-	for file in "${json_files[@]}"; do
-		sed -i.bak "s/-release\.zip/-release.${online_ext}/g" "${file}"
-		rm -f "${file}.bak"
-	done
 fi
 
 d2_base="https://d2.jpom.download/${use_tag}/${new_version}"
