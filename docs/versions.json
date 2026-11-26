@@ -1,6 +1,23 @@
 {
   "tag_name": "v2.11.15",
+  "tagName": "v2.11.15",
   "agentUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.zip",
   "serverUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.zip",
+  "agentTarGzUrl": "https://d2.jpom.download/release/2.11.15/agent-2.11.15-release.tar.gz",
+  "serverTarGzUrl": "https://d2.jpom.download/release/2.11.15/server-2.11.15-release.tar.gz",
+  "goAgentUrls": {
+    "linux/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-linux-amd64.tar.gz",
+    "linux/arm64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-linux-arm64.tar.gz",
+    "darwin/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-darwin-amd64.tar.gz",
+    "darwin/arm64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-darwin-arm64.tar.gz",
+    "windows/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-release-windows-amd64.tar.gz"
+  },
+  "goUpgradeUrls": {
+    "linux/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-upgrade-linux-amd64.jar",
+    "linux/arm64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-upgrade-linux-arm64.jar",
+    "darwin/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-upgrade-darwin-amd64.jar",
+    "darwin/arm64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-upgrade-darwin-arm64.jar",
+    "windows/amd64": "https://d2.jpom.download/release/2.11.15/agent-go-2.11.15-upgrade-windows-amd64.jar"
+  },
   "changelogUrl": "https://gitee.com/dromara/Jpom/raw/master/CHANGELOG.md"
 }
